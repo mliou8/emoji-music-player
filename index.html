@@ -1,0 +1,45 @@
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js">
+  </script>
+  <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js">
+  </script>
+  <script src="/bower_components/angular-dragdrop/src/angular-dragdrop.min.js"></script>
+  <script src="/js/module.js"></script>
+  <script src="/js/controllers/mainCtrl.js"></script>
+  <link href="style.css" type="text/css" rel="stylesheet" />
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <div ng-app="myApp">
+      <div ng-controller="mainCtrl">
+        <div class="row">
+          <div id="emoji-selector">
+            <div id="bearDiv" class="emoji" data-drag="true" jqyoui-draggable>
+              <img id="bearicon" src="/images/bear.png"> </div>
+            <div id="santaDiv" class="emoji" data-drag="true" jqyoui-draggable>
+              <img src="/images/santa_claus.png"> </div>
+            <div id="turtleDiv" class="emoji" data-drag="true" jqyoui-draggable>
+              <img src="/images/turtle.png"> </div>
+            <div id="volcanoDiv" class="emoji" data-drag="true" jqyoui-draggable>
+              <img src="/images/volcano.png"> </div>
+            <div id="devilDiv" class="emoji" data-drag="true" jqyoui-draggable data-drop="true">
+              <img src="/images/devil.png"> </div>
+            <div id="injuredDiv" class="emoji" data-drag="true" jqyoui-draggable data-drop="true">
+              <img src="/images/injured.png"> </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+<script src="/app.js"></script>
+
+</html>
