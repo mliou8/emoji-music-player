@@ -1,5 +1,5 @@
 #emoji-selector {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 80px;
@@ -7,6 +7,16 @@
     background: black;
 }
 
+#board {
+  border-style: solid 1px black;
+  border-color: black;
+  background-color: grey;
+  position: static;
+  right: 0;
+  bottom: 0;
+  width: 780px;
+  height: 400px;
+}
 
 .emoji {
     width: 40px;
@@ -15,7 +25,5 @@
 }
 
 * {
-    width: 100%;
-    height: 100%;
     box-sizing: border-box;
 }
