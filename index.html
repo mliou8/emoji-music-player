@@ -23,35 +23,45 @@
       <div class="page-header">
         <h1>Emoji Music Player</h1>
       </div>
-      <div class="well">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-          Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
+      <div class="row">
+        <div class="col-sm-11">
+          <div class="well">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur
+              et. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean lacinia bibendum nulla sed consectetur.</p>
+          </div>
+        </div>
       </div>
       <!-- <navbar> </navbar> -->
 
       <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-3">
           <div class="panel panel-success">
             <div class="panel-heading">
-                  <span class="label label-primary">Emoji Selector</span>
+              <span class="label label-primary">Emoji Selector</span>
             </div>
             <div class="panel-body">
               <div id="emoji-selector">
                 <span ng-repeat="image in images">
-                  <div id= " {{image.id}} " data-drag="true" data-jqyoui-options="{revert: 'invalid'}" jqyoui-draggable="{animate:true}" ng-model="list1">
-                  <img class = "emoji" src= " {{ image.src }} ">
+                  <div id= " {{image.id}} " data-drag="true" data-jqyoui-options= "{revert: 'invalid'}" jqyoui-draggable="{animate:true, index: {{$index}}, onStop: 'update(item)'}">
+                  <img class = "emoji" src= " {{ image.src }} " >
                 </div>
                 </span>
+              </div>
             </div>
           </div>
-          <button type="button" class="btn btn-lg btn-success" ng-click="play()">Play! </button>
+          <button type="button" class="btn btn-lg btn-success" ng-click="play()"> Generate! </button>
+          <iframe id="player" src="https://embed.spotify.com/?uri=spotify%3Atrack%3A33Q6ldVXuJyQmqs8BmAa0k" width="300" height="300" frameborder="0" allowtransparency="true"></iframe>
         </div> <!--sm-4-->
-      </div>
-        <div class="col-sm-10" id="board" data-drop="true" data-jqyoui-options jqyoui-droppable>
+        <div class="col-sm-8" id="board" data-drop="true" data-jqyoui-options jqyoui-droppable>
         </div> <!-- the board -->
-      </div> <!--row -->
-    </div> <!--ctrl-->
-  </div> <!--container-->
+      </div>
+      <!-- the player -->
+    </div>
+    <!--row -->
+  </div>
+  <!--ctrl-->
+  </div>
+  <!--container-->
 </body>
 
 

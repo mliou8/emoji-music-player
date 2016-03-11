@@ -1,6 +1,5 @@
 app.controller('mainCtrl', function($scope) {
-  $scope.list1 = "content";
-  $scope.list2 = "";
+
   $scope.images = [{
     id: "bearDiv",
     src: "/images/bear.png"
@@ -21,8 +20,26 @@ app.controller('mainCtrl', function($scope) {
     src: "/images/injured.png"
   }];
 
+  $scope.musicGenerator = [];
+
+  $scope.update = function(e) {
+    var found = $scope.musicGenerator.some(function(el) {
+      return el.name === e.target.id;
+    });
+    if (!found) {
+      $scope.musicGenerator.push({
+        name: e.target.id,
+        position: [e.screenX, e.screenY]
+      });
+    }
+    for (var i = 0; i < $scope.musicGenerator.length; i++) {
+      if ($scope.musicGenerator[i].name === e.target.id) {
+        $scope.musicGenerator[i].position = [e.screenX, e.screenY];
+      }
+    }
+  }
+
   $scope.play = function() {
-    console.log("$scope.list1 ", $scope.list1);
-    console.log("$scope.list2 ", $scope.list2);
+    console.log($scope.musicGenerator);
   }
 })
