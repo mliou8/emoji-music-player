@@ -41,19 +41,24 @@
             </div>
             <div class="panel-body">
               <div id="emoji-selector">
-                <span ng-repeat="image in images">
-                  <div id= " {{image.id}} " data-drag="true" data-jqyoui-options= "{revert: 'invalid'}" jqyoui-draggable="{animate:true, index: {{$index}}, onStop: 'update(item)'}">
-                  <img class = "emoji" src= " {{ image.src }} " >
-                </div>
+                <span ng-repeat="rows in images">
+                  <div class = "column" ng-repeat = "image in rows">
+                    <div id= " {{image.id}} " data-drag="true" data-jqyoui-options= "{revert: 'invalid'}" jqyoui-draggable="{animate:true, index: {{$index}}, onStop: 'update(item)'}">
+                      <img class = "emoji" src= " {{ image.src }} " >
+                    </div>
+                  </div>
                 </span>
               </div>
             </div>
           </div>
-          <button type="button" class="btn btn-lg btn-success" ng-click="play()"> Generate! </button>
-          <iframe id="player" src="https://embed.spotify.com/?uri=spotify%3Atrack%3A33Q6ldVXuJyQmqs8BmAa0k" width="300" height="300" frameborder="0" allowtransparency="true"></iframe>
-        </div> <!--sm-4-->
+          <button type="button" class="btn btn-small btn-success" ng-click="generate()"> Generate! </button>
+          <button type="button" class="btn btn-small btn-info" ng-click="clear()"> Clear </button>
+          <iframe id="player" ng-show="showPlayer" ng-src=" {{musicUrl}} " width="300" height="300" frameborder="0" allowtransparency="true"></iframe>
+        </div>
+        <!--sm-4-->
         <div class="col-sm-8" id="board" data-drop="true" data-jqyoui-options jqyoui-droppable>
-        </div> <!-- the board -->
+        </div>
+        <!-- the board -->
       </div>
       <!-- the player -->
     </div>
