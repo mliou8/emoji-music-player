@@ -6,6 +6,7 @@
 
 To-dos:		
 -- List of songs, at least 10 songs that all have a value split (key corresponding)
+-- Each song should correspond to certain values, and those values will rank up on a graph. The ultimate value will determine which song is selected.
 -- Calculate positions and generate a song based on that.
 -- Fix up styling
 -- Deploy!

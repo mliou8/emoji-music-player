@@ -1,42 +1,8 @@
-app.controller('mainCtrl', function($scope, $sce) {
+app.controller('mainCtrl', function($scope, $sce, emojiFactory, musicFactory) {
 
   $scope.showPlayer = false;
   var score = 0;
 
-  var images = [{
-    id: "bearDiv",
-    src: "/images/bear.png"
-  }, {
-    id: "santaDiv",
-    src: "/images/santa_claus.png"
-  }, {
-    id: "turtleDiv",
-    src: "/images/turtle.png"
-  }, {
-    id: "volcanoDiv",
-    src: "/images/volcano.png"
-  }, {
-    id: "devilDiv",
-    src: "/images/devil.png"
-  }, {
-    id: "injuredDiv",
-    src: "/images/injured.png"
-  }, {
-    id: "chineseDiv",
-    src: "/images/chinese.png"
-  }, {
-    id: "yinyangDiv",
-    src: "/images/yinyang.png"
-  }, {
-    id: "fireDiv",
-    src: "/images/firetruck.png"
-  }, {
-    id: "angryDiv",
-    src: "/images/angry.png"
-  }, {
-    id: "toiletDiv",
-    src: "/images/toilet.png"
-  }];
 
   //Sort NG-repeat into columns
   function chunk(arr, size) {
@@ -47,35 +13,21 @@ app.controller('mainCtrl', function($scope, $sce) {
     return newArr;
   }
 
+  var images = emojiFactory.images;
   $scope.images = chunk(images, 4);
-  console.log("$scope.images ", $scope.images)
 
   //List of Spotify URIS
-  $scope.music = [{
-    url: "https://embed.spotify.com/?uri=spotify:track:3VRXedC3QOvXZATRGlAyDR", //Nicki Minaj Song
-    value: 10
-  }, {
-    url: "https://embed.spotify.com/?uri=spotify:track:0rkajHs0Kcw73nFDlKmuBk", //Classical Beethoven
-    value: 20
-  }, {
-    url: "https://embed.spotify.com/?uri=spotify:track:13uW9hmN28qYQqoPykMB5d", // Summer Time
-    value: 30
-  }, {
-    url: "https://embed.spotify.com/?uri=spotify:track:2qdP4opHhLkDUGxzirBy8M", // Skinny Love
-    value: 40
-  }, {
-    url: "https://embed.spotify.com/?uri=spotify:track:7HzCxalzzYQOFb9a7Xs3j6", //Ibiza
-    value: 50
-  }, {
-    url: "https://embed.spotify.com/?uri=spotify:track:0IKK48xF4eEdfofyaeKWWO", //Pillowtalk
-    value: 60
-  }]
+  $scope.music = musicFactory.songs;
 
+  // Helper Function to pick the song
   function songUpdate() {
+    console.log("$scope.music ", $scope.music);
     $scope.musicGenerator.forEach(function(data) {
+      console.log("Data is ", data);
       score += (data.position[0] + data.position[1])
     })
-    score = Math.ceil((Math.random() * 100) / 10) * 10;
+    console.log("Score is ", score);
+    // score = Math.ceil((Math.random() * 100) / 10) * 10;
     for (var i = 0; i < $scope.music.length; i++) {
       if (score === $scope.music[i].value) {
         $scope.musicUrl = $scope.music[i].url
@@ -113,6 +65,4 @@ app.controller('mainCtrl', function($scope, $sce) {
       }
     }
   }
-
-
 })

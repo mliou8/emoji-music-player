@@ -24,16 +24,17 @@
 
 #player {
   margin-top: 15px;
-  float: right;
 }
 
 .emoji {
     width: 40px;
     height: 40px;
-    padding: 3px;
     float: left;
 }
-
+.emojiContainer {
+  padding: 0px;
+  padding-left: 20px !important;
+}
 * {
     box-sizing: border-box;
 }
