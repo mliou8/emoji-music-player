@@ -1,7 +1,13 @@
 app.controller('mainCtrl', function($scope, $sce, emojiFactory, musicFactory) {
 
   $scope.showPlayer = false;
-  var score = 0;
+  var score = {
+    sad_score: 0,
+    fire_score: 0,
+    angry_score: 0,
+    top10_score: 0,
+    chill_score: 0
+  };
 
 
   //Sort NG-repeat into columns
@@ -16,18 +22,20 @@ app.controller('mainCtrl', function($scope, $sce, emojiFactory, musicFactory) {
   var images = emojiFactory.images;
   $scope.images = chunk(images, 4);
 
-  //List of Spotify URIS
-  $scope.music = musicFactory.songs;
+  $scope.musicUrl = "";
 
   // Helper Function to pick the song
-  function songUpdate() {
-    console.log("$scope.music ", $scope.music);
-    $scope.musicGenerator.forEach(function(data) {
-      console.log("Data is ", data);
-      score += (data.position[0] + data.position[1])
+  function pickSong() {
+    $scope.musicGenerator.forEach(function(emoji) {
+      for (var key in score) {
+        if (emoji[key]) {
+          //apply the modifier to the score
+          score[key] = score[key] + (emoji.position[0] + emoji.position[
+            1]) * emoji[key]
+        }
+      }
     })
-    console.log("Score is ", score);
-    // score = Math.ceil((Math.random() * 100) / 10) * 10;
+    console.log("score ", score);
     for (var i = 0; i < $scope.music.length; i++) {
       if (score === $scope.music[i].value) {
         $scope.musicUrl = $scope.music[i].url
@@ -35,8 +43,10 @@ app.controller('mainCtrl', function($scope, $sce, emojiFactory, musicFactory) {
     }
   }
 
+  //Generate instance of spotify player
   $scope.generate = function() {
-    songUpdate();
+    pickSong();
+    console.log("$scope.musicGenerator ", $scope.musicGenerator);
     $scope.musicUrl = $sce.trustAsResourceUrl($scope.musicUrl);
     $scope.showPlayer = true;
   }
@@ -45,20 +55,34 @@ app.controller('mainCtrl', function($scope, $sce, emojiFactory, musicFactory) {
     $scope.showPlayer = false;
   }
 
+  //List of Spotify URIS
+  $scope.music = musicFactory.songs;
+
   //Track statistics of where things are dropped
   $scope.musicGenerator = [];
 
-  // Updating
-  $scope.update = function(e) {
+  // Updating the generator object
+  $scope.updateGen = function(e) {
+    //returns true or false
     var found = $scope.musicGenerator.some(function(el) {
       return el.name === e.target.id;
     });
     if (!found) {
-      $scope.musicGenerator.push({
+      var temp = {
         name: e.target.id,
         position: [e.screenX, e.screenY]
-      });
+      }
+      for (var i = 0; i < images.length; i++) {
+        if (temp.name === images[i].id) {
+          for (var key in images[i]) {
+            if (!temp.key)
+              temp[key] = images[i][key]
+          }
+        }
+      }
+      $scope.musicGenerator.push(temp);
     }
+    //If it already exists update the position
     for (var i = 0; i < $scope.musicGenerator.length; i++) {
       if ($scope.musicGenerator[i].name === e.target.id) {
         $scope.musicGenerator[i].position = [e.screenX, e.screenY];

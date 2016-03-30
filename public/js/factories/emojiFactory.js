@@ -5,8 +5,8 @@ app.factory('emojiFactory', function() {
       src: "/images/bear.png",
       sad_score: 1.3
     }, {
-      id: "santaDiv",
-      src: "/images/santa_claus.png",
+      id: "hatDiv",
+      src: "/images/hat.png",
       fire_score: 1.4
     }, {
       id: "turtleDiv",
@@ -22,8 +22,8 @@ app.factory('emojiFactory', function() {
       src: "/images/devil.png",
       angry_score: 1.4
     }, {
-      id: "injuredDiv",
-      src: "/images/injured.png",
+      id: "chickDiv",
+      src: "/images/chick.png",
       top10_score: 1.4
     }, {
       id: "ghostDiv",
@@ -39,14 +39,14 @@ app.factory('emojiFactory', function() {
       fire_score: 1.4,
       top10_score: 1.2
     }, {
-      id: "angryDiv",
-      src: "/images/angry.png",
+      id: "dragonDiv",
+      src: "/images/dragon.png",
       angry_score: 1.7,
       chill_score: 0.5
     }, {
       id: "toiletDiv",
       src: "/images/toilet.png",
-      top10_score: 3.0
+      top10_score: 2.0,
     }]
   }
 });
