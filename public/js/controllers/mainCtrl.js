@@ -9,7 +9,9 @@ app.controller('mainCtrl', function($scope, $sce, emojiFactory, musicFactory) {
   $scope.music = musicFactory.songs;
   //Track statistics of where things are dropped
   var boardEmojis = [];
-
+  //background image number
+  var background = 1;
+  $scope.imageUrl = "./images/background_1.jpg";
   //Sort NG-repeat into columns
   function chunk(arr, size) {
     var newArr = [];
@@ -67,15 +69,24 @@ app.controller('mainCtrl', function($scope, $sce, emojiFactory, musicFactory) {
     var randIndex = Math.floor((Math.random() * valid_songs.length + 1));
     $scope.musicUrl = valid_songs[randIndex];
   }
-
-
   //Generate instance of spotify player
   $scope.generate = function() {
-    pickSong();
-    $scope.musicUrl = $sce.trustAsResourceUrl($scope.musicUrl);
-    $scope.showPlayer = true;
-  }
+      pickSong();
+      $scope.musicUrl = $sce.trustAsResourceUrl($scope.musicUrl);
+      $scope.showPlayer = true;
+    }
+    //Force a reload of screen
   $scope.clear = function() {
+    location.reload();
     $scope.showPlayer = false;
+  }
+  $scope.toggleBackground = function() {
+    if (background === 6) {
+      background = 1;
+    } else {
+      background++;
+    }
+    $scope.imageUrl = "./images/background_" + background + '.jpg';
+    console.log("background is ", background);
   }
 })

@@ -11,6 +11,7 @@
   <script src="/js/module.js"></script>
   <script src="/js/directives/navbar/navbar.js"></script>
   <script src="/js/directives/header/header.js"></script>
+  <script src="/js/directives/backImg/backImg.js"></script>
   <script src="/js/controllers/mainCtrl.js"></script>
   <script src="/js/factories/emojiFactory.js"></script>
   <script src="/js/factories/musicFactory.js"></script>
@@ -41,10 +42,11 @@
           </div>
           <button type="button" class="btn btn-small btn-success" ng-click="generate()"> Generate! </button>
           <button type="button" class="btn btn-small btn-info" ng-click="clear()"> Clear </button>
+          <button type="button" class="btn btn-small btn-danger" ng-click="toggleBackground()"> Toggle Img! </button>
           <iframe id="player" ng-show="showPlayer" ng-src=" {{musicUrl}} " width="210" height="300" frameborder="0" allowtransparency="true"></iframe>
         </div>
         <!--sm-4-->
-        <div class="col-sm-9" id="board" data-drop="true" data-jqyoui-options jqyoui-droppable>
+        <div class="col-sm-9" id="board" data-drop="true" data-jqyoui-options jqyoui-droppable back-img="{{imageUrl}}">
         </div>
         <!-- the board -->
       </div>
