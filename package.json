@@ -14,8 +14,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.5.3",
+    "bower": "1.6.5",
     "express": "^4.13.4",
-    "nodemon": "^1.9.1",
-    "bower": "1.6.5"
+    "nodemon": "^1.9.1"
   }
 }
