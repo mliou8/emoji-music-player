@@ -8,7 +8,7 @@ var app = express();
 
 server.on('request', app);
 
-server.listen(3000, function() {
+server.listen(process.env.PORT || 3000, function() {
   console.log('The server is listening on port 3000!');
 });
 
