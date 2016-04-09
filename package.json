@@ -2,14 +2,15 @@
   "name": "emoji",
   "version": "1.0.0",
   "engines": {
-    "node": "4.1.2"
+    "node": "4.1.2",
+    "npm": "2.14.6"
   },
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "postinstall": "bower install"
   },
   "author": "",
   "license": "ISC",
